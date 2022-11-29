@@ -25,9 +25,20 @@ function App() {
       </header>
 
       <div className="content p-40">
-        <h1 className="mb-40">Все кроссовки</h1>
+     
+          <div className="content__title d-flex mb-40 justify-between">
+            <h1 className="">Все кроссовки</h1>
+            <div className="content__search">
+              <img src="/img/content/search.svg" alt="" />
+              <input placeholder="Поиск..." type="text" />
+            </div>
+          </div>
+          
         <div className="content__cards d-flex">
           <div className="card">
+            <div className="card__favorite">
+            <img src="img/content/heart-liked.svg" alt="" />
+            </div>
             <div className="card__img">
               <img src="/img/sneakers/1.jpg" alt="sneaker"/>
             </div>

@@ -22,7 +22,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #E7F6FF;
 }
-
 .wrapper{
   background: #FFFFFF;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
@@ -31,7 +30,7 @@ body {
   margin: 0 auto;
   margin: 50px auto;
 }
-
+//?-------------------HEADER----------------------
 header {
   border-bottom: 1px solid #EAEAEA;
   img{
@@ -43,27 +42,54 @@ header {
     line-height: 24px;
   }
 }
-
+//?-------------------КОНТЕНТ----------------------
 .content {
   h1{
     font-weight: 700;
     font-size: 32px;
     line-height: 39px;
   }
+  &__search{
+    border: 1px solid #f3f3f3;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 18px;
+    input{
+      width: 200px;
+    }
+    img{
+      margin-right: 18px;
+      width: 15px;
+      height: 15px;
+    }
+  }
   &__cards{
     display: flex;
     justify-content: space-between;
   }
 }
+//?-------------------КАРТОЧКИ----------------------
 .card>*:not(:last-child){
   padding-bottom: 14px;
 }
 .card{
- 
+  &:hover{
+    transition: 0.2s ease-in-out;
+    box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
+    transform: translateY(-5px);
+  }
   border: 1px solid #f1f1f1;
-  padding: 0 30px 20px;
+  padding: 30px;
   width: 220px;
-  border-radius: 40px;
+  border-radius: 30px;
+  position: relative;
+  &__favorite{
+    position: absolute;
+    top: 30px;
+    cursor: pointer;
+  }
   &__img{
     width: 133px;
     height: 135px;
@@ -96,11 +122,10 @@ header {
     width: 32px;
     height: 32px;
     background-color: inherit;
-    border: 1px solid #f2f2f2;
-    border-radius: 8px;
     &__plus{
       width: 32px;
       height: 32px;
     }
   }
 }
+//?-------------------??----------------------
