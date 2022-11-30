@@ -68,14 +68,15 @@ header {
   }
   &__cards{
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
 }
 //?-------------------КАРТОЧКИ----------------------
-.card>*:not(:last-child){
+.card>*:not(:last-child){ //отсутпы после каждого элемента карточки
   padding-bottom: 14px;
 }
 .card{
+  margin-right: 40px; //отступы между карточками
   &:hover{
     transition: 0.2s ease-in-out;
     box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
