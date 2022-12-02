@@ -2,11 +2,6 @@
 .card>*:not(:last-child){ //отсутпы после каждого элемента карточки
     padding-bottom: 14px;
 }
-.card:hover{
-    transition: 0.2s ease-in-out;
-    box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
-    transform: translateY(-5px);
-  }
 .card{
     margin-right: 40px; //отступы между карточками
     border: 1px solid #f1f1f1;
@@ -14,6 +9,14 @@
     width: 220px;
     border-radius: 30px;
     position: relative;
+    .plus{
+        cursor: pointer;
+    }
+    &:hover{
+        transition: 0.2s ease-in-out;
+        box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
+        transform: translateY(-5px);
+    }
     .favorite{
       position: absolute;
       top: 30px;
