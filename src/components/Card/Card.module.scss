@@ -1,0 +1,57 @@
+//?-------------------КАРТОЧКИ----------------------
+.card>*:not(:last-child){ //отсутпы после каждого элемента карточки
+    padding-bottom: 14px;
+}
+.card:hover{
+    transition: 0.2s ease-in-out;
+    box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
+    transform: translateY(-5px);
+  }
+.card{
+    margin-right: 40px; //отступы между карточками
+    border: 1px solid #f1f1f1;
+    padding: 30px;
+    width: 220px;
+    border-radius: 30px;
+    position: relative;
+    .favorite{
+      position: absolute;
+      top: 30px;
+      cursor: pointer;
+    }
+    .img{
+      width: 133px;
+      height: 135px;
+      margin-left: auto;
+      margin-right: auto;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .text{
+        font-weight: 400;
+        font-size: 14px;
+    }
+    .price{
+        display: flex;
+        flex-direction: column;
+      span{
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 13px;
+        text-transform: uppercase;
+        color: #BDBDBD;
+        margin-bottom: 2px;
+      }
+      b {
+        font-size: 14px;
+      }
+    }
+    button{
+      display: flex;
+      width: 32px;
+      height: 32px;
+      background-color: inherit;
+    }
+}
