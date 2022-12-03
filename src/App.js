@@ -5,8 +5,11 @@ import Card from './components/Card';
 
 
 function App() {
-  const [items, setItems] = React.useState([]);
+  //обновляем корзину и добавляем туда товар который отмечен галочкой
+  const [cartItems, setCartItems] = React.useState([]);
 
+  //получаем с бэка данные карточек
+  const [items, setItems] = React.useState([]);
   React.useEffect(() => {
     fetch('https://638b00687220b45d2285fede.mockapi.io/items').then((res) => {
       return res.json()
@@ -14,9 +17,9 @@ function App() {
       setItems(json)
     })
   }, [])
- 
-
+  //открываем и закрываем корзину
   const [cartOpened, setCartOpened] = React.useState(false)
+
   return (
     <div className="wrapper">
       {cartOpened && <Drawer onClose={()=> setCartOpened(false)}/>}
