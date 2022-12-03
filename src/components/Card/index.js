@@ -4,12 +4,10 @@ import styles from './Card.module.scss'
 
 function Card(props){
   const [isAdded, setIsAdded] = React.useState(false)
-
   const onClickPlus = () => {
     setIsAdded(!isAdded); //когда мы будем вызывать эту функцию - то значение инвертируется на true
     //при повторном вызове все поменяется обратно
   }
-
   return (
     <div className={styles.card}>
       <div className={styles.favorite} onClick={props.onFavorite}>

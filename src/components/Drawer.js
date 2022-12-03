@@ -1,9 +1,10 @@
-function Drawer(){
+function Drawer(props){
     return(
-        <div className="overlay" style={{display: 'none'}}>
+        // style={{display: 'none'}}
+        <div className="overlay" >
             <div className="drawer">
                 <h3 className="d-flex justify-between">
-                    Корзина<img className="cu-p" src="img/content/remove.svg" alt="" />
+                    Корзина<img onClick={props.onClose} className="cu-p" src="img/content/remove.svg" alt="" />
                 </h3>
                 <div className="cart__items">
                     <div className="cart d-flex align-center">
