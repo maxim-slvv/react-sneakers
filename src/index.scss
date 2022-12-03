@@ -46,6 +46,7 @@ header {
 }
 //?-------------------КОНТЕНТ----------------------
 .content {
+  
   h1{
     font-weight: 700;
     font-size: 32px;
@@ -69,6 +70,8 @@ header {
   }
   &__cards{
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     // justify-content: space-between;
   }
 }
