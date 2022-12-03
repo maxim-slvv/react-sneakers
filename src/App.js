@@ -43,7 +43,7 @@ function App() {
        "imageUrl": "/img/sneakers/7.jpg"
       },
       {
-       "title": "Мужdfdfdfdf ffffffffdf ffffffffff fffffffff ffffffffские Кроссовки Nike LeBron XVIII",
+       "title": "Мужские Кроссовки Nike LeBron XVIII",
        "price": "16 499",
        "imageUrl": "/img/sneakers/8.jpg"
       },
@@ -77,7 +77,7 @@ function App() {
       <Header onClickCart={()=> setCartOpened(true)}/>
 
       {/* ТЕЛО ПОСЛЕ ХЕАДЕРА */}
-      <div className="content pt-40 pl-40 pr-40 pb-10">
+      <div className="content p-40">
           <div className="content__title d-flex mb-40 justify-between">
             <h1 className="">Все кроссовки</h1>
             <div className="content__search">
