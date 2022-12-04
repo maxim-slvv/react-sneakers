@@ -1,28 +1,27 @@
-function Drawer(props){
+function Drawer({onClose, items = []}){ //применяем деструктуризацию объекта props
     return(
-        // style={{display: 'none'}}
         <div className="overlay" >
             <div className="drawer">
                 <h3 className="d-flex justify-between">
-                    Корзина<img onClick={props.onClose} className="cu-p" src="img/content/remove.svg" alt="" />
+                    Корзина<img onClick={onClose} className="cu-p" src="img/content/remove.svg" alt="" />
                 </h3>
                 <div className="cart__items">
-                    <div className="cart d-flex align-center">
-                    <img src="/img/sneakers/2.jpg" alt="Sneakers"/>
-                    <div>
-                        <p>Мужские Кроссовки Nike Air Max 270</p>
-                        <b>12 999 руб.</b>
-                    </div>
-                    <img className="cart__remove" src="img/content/remove.svg" alt="" />
-                    </div>
-                    <div className="cart d-flex align-center">
-                    <img src="/img/sneakers/11.jpg" alt="Sneakers"/>
-                    <div>
-                        <p>Мужские Кроссовки Nike Air Max 270</p>
-                        <b>12 999 руб.</b>
-                    </div>
-                    <img className="cart__remove" src="img/content/remove.svg" alt="" />
-                    </div>
+
+                {
+                    items.map((obj) => (
+                        <div className="cart d-flex align-center">
+                        <img src={obj.imageUrl} alt="Sneakers"/>
+                        <div>
+                            <p>{obj.title}</p>
+                            <b>{obj.price}</b>
+                        </div>
+                        <img className="cart__remove" src="img/content/remove.svg" alt="" />
+                        </div>
+                    ))
+                }
+
+                
+                    
                 </div>
                 <div className="cartTotalBlock">
                     <ul>

@@ -6,7 +6,11 @@ import Card from './components/Card';
 
 function App() {
   //обновляем корзину и добавляем туда товар который отмечен галочкой
-  const [cartItems, setCartItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([
+  ]);
+
+  //открываем и закрываем корзину
+  const [cartOpened, setCartOpened] = React.useState(false)
 
   //получаем с бэка данные карточек
   const [items, setItems] = React.useState([]);
@@ -17,12 +21,16 @@ function App() {
       setItems(json)
     })
   }, [])
-  //открываем и закрываем корзину
-  const [cartOpened, setCartOpened] = React.useState(false)
+
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj])
+  }
+
+  console.log(cartItems)
 
   return (
     <div className="wrapper">
-      {cartOpened && <Drawer onClose={()=> setCartOpened(false)}/>}
+      {cartOpened && <Drawer items={cartItems} onClose={()=> setCartOpened(false)}/>}
       <Header onClickCart={()=> setCartOpened(true)}/>
       {/* ТЕЛО ПОСЛЕ ХЕАДЕРА */}
       <div className="content p-40">
@@ -35,13 +43,13 @@ function App() {
           </div>
           {/* КАРТОЧКИ */}
         <div className="content__cards d-flex">
-          {items.map((obj) => ( //можно было сделать forEach - но он ничего не возвращает
+          {items.map((item) => ( //можно было сделать forEach - но он ничего не возвращает
             <Card 
-              title = {obj.title} 
-              price= {obj.price} 
-              imageUrl={obj.imageUrl}
+              title = {item.title} 
+              price= {item.price} 
+              imageUrl={item.imageUrl}
               onFavorite={()=> console.log('Добавили в закладки')}
-              onPlus={()=> console.log('Нажали плюс')}
+              onPlus={(obj)=> onAddToCart(obj)}
             />
           ))}
         </div>
