@@ -53,6 +53,14 @@ header {
     line-height: 39px;
   }
   &__search{
+    position: relative;
+    .clear{
+      position: absolute;
+      right: 0;
+      width: 14px;
+      height: 14px;
+      
+    }
     border: 1px solid #f3f3f3;
     border-radius: 10px;
     display: flex;

@@ -6,8 +6,7 @@ import Card from './components/Card';
 
 function App() {
   //обновляем корзину и добавляем туда товар который отмечен галочкой
-  const [cartItems, setCartItems] = React.useState([
-  ]);
+  const [cartItems, setCartItems] = React.useState([]);
 
   //открываем и закрываем корзину
   const [cartOpened, setCartOpened] = React.useState(false)
@@ -26,7 +25,12 @@ function App() {
     setCartItems(prev => [...prev, obj])
   }
 
-  console.log(cartItems)
+  //поиск по странице
+  const [searchValue, setSearchValue] = React.useState('');
+  
+  const onChangeSearchInput = (event) =>{
+    setSearchValue(event.target.value);
+  }
 
   return (
     <div className="wrapper">
@@ -35,16 +39,23 @@ function App() {
       {/* ТЕЛО ПОСЛЕ ХЕАДЕРА */}
       <div className="content p-40">
           <div className="content__title d-flex mb-40 justify-between">
-            <h1 className="">Все кроссовки</h1>
+            <h1>{searchValue ? `Поиск по запросу: '${searchValue}'` : 'Все кроссовки'}</h1>
             <div className="content__search">
               <img src="/img/content/search.svg" alt="" />
-              <input placeholder="Поиск..." type="text" />
+              {searchValue && <img onClick={() => setSearchValue('')} 
+              className="clear cu-p" src="img/content/remove.svg" alt="Clear" />}
+              <input
+                onChange={onChangeSearchInput} 
+                value={searchValue} 
+                placeholder="Поиск..." 
+                type="text" />
             </div>
           </div>
           {/* КАРТОЧКИ */}
         <div className="content__cards d-flex">
-          {items.map((item) => ( //можно было сделать forEach - но он ничего не возвращает
+          {items.map((item, index) => ( //можно было сделать forEach - но он ничего не возвращает
             <Card 
+              key={index}
               title = {item.title} 
               price= {item.price} 
               imageUrl={item.imageUrl}
