@@ -53,15 +53,20 @@ function App() {
           </div>
           {/* КАРТОЧКИ */}
         <div className="content__cards d-flex">
-          {items.map((item, index) => ( //можно было сделать forEach - но он ничего не возвращает
-            <Card 
-              key={index}
-              title = {item.title} 
-              price= {item.price} 
-              imageUrl={item.imageUrl}
-              onFavorite={()=> console.log('Добавили в закладки')}
-              onPlus={(obj)=> onAddToCart(obj)}
-            />
+          {items
+            //исключаем карточки которые не подходят по описанию
+            //переводим в нижний регистр значение названия карточки и переводим значение поиска
+            .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+            //можно было сделать forEach - но он ничего не возвращает
+            .map((item, index) => ( 
+              <Card 
+                key={index}
+                title = {item.title} 
+                price= {item.price} 
+                imageUrl={item.imageUrl}
+                onFavorite={()=> console.log('Добавили в закладки')}
+                onPlus={(obj)=> onAddToCart(obj)}
+              />
           ))}
         </div>
 
