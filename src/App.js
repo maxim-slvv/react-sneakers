@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
 import Card from './components/Card';
+import axios from 'axios';
 
 
 function App() {
@@ -13,17 +14,31 @@ function App() {
 
   //получаем с бэка данные карточек
   const [items, setItems] = React.useState([]);
+
   React.useEffect(() => {
-    fetch('https://638b00687220b45d2285fede.mockapi.io/items').then((res) => {
-      return res.json()
-    }).then(json => {
-      setItems(json)
-    })
+    // переделываем c fetch на axios
+    axios.get('https://638b00687220b45d2285fede.mockapi.io/items').then(res =>{
+      setItems(res.data);
+    });
+    axios.get('https://638b00687220b45d2285fede.mockapi.io/cart').then(res =>{
+      setCartItems(res.data);
+    });
+
   }, [])
 
   const onAddToCart = (obj) => {
+    // говорим по вот этой ссылке передай объект - который возвращает метод onAddToCart
+    axios.post('https://638b00687220b45d2285fede.mockapi.io/cart', obj);
+    // а потом мы его добавляем в массив корзины
     setCartItems(prev => [...prev, obj])
   }
+  
+  //удаляем данные с бэка
+  const onRemoveItem = (id) => {
+    axios.delete(`https://638b00687220b45d2285fede.mockapi.io/cart/${id}`);
+    setCartItems(prev => prev.filter(item => item.id !== id));
+  }
+
 
   //поиск по странице
   const [searchValue, setSearchValue] = React.useState('');
@@ -34,7 +49,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      {cartOpened && <Drawer items={cartItems} onClose={()=> setCartOpened(false)}/>}
+      {cartOpened && <Drawer items={cartItems} onClose={()=> setCartOpened(false)} onRemove={onRemoveItem}/>}
       <Header onClickCart={()=> setCartOpened(true)}/>
       {/* ТЕЛО ПОСЛЕ ХЕАДЕРА */}
       <div className="content p-40">

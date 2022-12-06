@@ -1,4 +1,4 @@
-function Drawer({onClose, items = []}){ //применяем деструктуризацию объекта props
+function Drawer({onClose, items = [], onRemove}){ //применяем деструктуризацию объекта props
     return(
         <div className="overlay" >
             <div className="drawer">
@@ -6,7 +6,6 @@ function Drawer({onClose, items = []}){ //применяем деструкту�
                     Корзина<img onClick={onClose} className="cu-p" src="img/content/remove.svg" alt="" />
                 </h3>
                 <div className="cart__items">
-
                 {
                     items.map((obj) => (
                         <div className="cart d-flex align-center">
@@ -15,13 +14,10 @@ function Drawer({onClose, items = []}){ //применяем деструкту�
                             <p>{obj.title}</p>
                             <b>{obj.price}</b>
                         </div>
-                        <img className="cart__remove" src="img/content/remove.svg" alt="" />
+                        <img onClick={() => onRemove(obj.id)} className="cart__remove" src="img/content/remove.svg" alt="" />
                         </div>
                     ))
                 }
-
-                
-                    
                 </div>
                 <div className="cartTotalBlock">
                     <ul>
