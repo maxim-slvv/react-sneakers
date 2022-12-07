@@ -9,6 +9,14 @@ function App() {
   //обновляем корзину и добавляем туда товар который отмечен галочкой
   const [cartItems, setCartItems] = React.useState([]);
 
+  //массив для закладок favorite
+  const [favorites, setFavorites] = React.useState([]);
+
+  const onAddToFavorite = (obj) => {
+    axios.post('https://638b00687220b45d2285fede.mockapi.io/favorites', obj);
+    setFavorites(prev => [...prev, obj])
+  }
+
   //открываем и закрываем корзину
   const [cartOpened, setCartOpened] = React.useState(false)
 
@@ -80,7 +88,7 @@ function App() {
                 title = {item.title} 
                 price= {item.price} 
                 imageUrl={item.imageUrl}
-                onFavorite={()=> console.log('Добавили в закладки')}
+                onFavorite={(obj)=> onAddToFavorite(obj)}
                 onPlus={(obj)=> onAddToCart(obj)}
               />
           ))}
