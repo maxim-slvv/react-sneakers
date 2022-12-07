@@ -1,8 +1,11 @@
 import React from 'react';
+import {Routes, Route} from 'react-router-dom';
+import axios from 'axios';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
-import Card from './components/Card';
-import axios from 'axios';
+import Home from './pages/Home';
+
+
 
 
 function App() {
@@ -60,42 +63,24 @@ function App() {
     <div className="wrapper">
       {cartOpened && <Drawer items={cartItems} onClose={()=> setCartOpened(false)} onRemove={onRemoveItem}/>}
       <Header onClickCart={()=> setCartOpened(true)}/>
-      {/* ТЕЛО ПОСЛЕ ХЕАДЕРА */}
-      <div className="content p-40">
-          <div className="content__title d-flex mb-40 justify-between">
-            <h1>{searchValue ? `Поиск по запросу: '${searchValue}'` : 'Все кроссовки'}</h1>
-            <div className="content__search">
-              <img src="/img/content/search.svg" alt="" />
-              {searchValue && <img onClick={() => setSearchValue('')} 
-              className="clear cu-p" src="img/content/remove.svg" alt="Clear" />}
-              <input
-                onChange={onChangeSearchInput} 
-                value={searchValue} 
-                placeholder="Поиск..." 
-                type="text" />
-            </div>
-          </div>
-          {/* КАРТОЧКИ */}
-        <div className="content__cards d-flex">
-          {items
-            //исключаем карточки которые не подходят по описанию
-            //переводим в нижний регистр значение названия карточки и переводим значение поиска
-            .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-            //можно было сделать forEach - но он ничего не возвращает
-            .map((item, index) => ( 
-              <Card 
-                key={index}
-                title = {item.title} 
-                price= {item.price} 
-                imageUrl={item.imageUrl}
-                onFavorite={(obj)=> onAddToFavorite(obj)}
-                onPlus={(obj)=> onAddToCart(obj)}
-              />
-          ))}
-        </div>
       
-
-      </div>
+      <Routes>
+        <Route path='/' element={ 
+          <Home 
+            items={items}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            onAddToFavorite={onAddToFavorite}
+            onAddToCart={onAddToCart}
+            onChangeSearchInput={onChangeSearchInput}
+          />
+        }/>
+         <Route path="/" element={<p>Главная</p>}></Route>
+         <Route path="/favorites" element={<p>ЗАКЛАДКИ</p>}></Route>
+      </Routes>
+      
+      {/* ТЕЛО ПОСЛЕ ХЕАДЕРА */}
+ 
     </div>
    
 
