@@ -106,7 +106,7 @@ header {
   background: #FFFFFF;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  h3{
+  h2{
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
@@ -211,6 +211,30 @@ header {
     cursor: pointer;
     &:hover{
       opacity: 1;
+    }
+  }
+}
+//?-------------------DRAWER--EMPTY----------------------
+
+.cardEmpty{
+  text-align: center;
+  p{
+    width: 280px;
+    line-height: 24px;
+  }
+  .greenButton{
+    width: 245px;
+    margin-top: 20px;
+    &:hover{
+      img{
+        transform:  translateX(-3px);
+      }
+    }
+    img {
+      position: relative;
+      top: 1px;
+      margin-right: 15px;
+      transition: transform 0.15s ease-in-out;
     }
   }
 }

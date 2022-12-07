@@ -48,6 +48,7 @@ function App() {
   }
 
   return (
+  
     <div className="wrapper">
       {cartOpened && <Drawer items={cartItems} onClose={()=> setCartOpened(false)} onRemove={onRemoveItem}/>}
       <Header onClickCart={()=> setCartOpened(true)}/>
@@ -84,7 +85,7 @@ function App() {
               />
           ))}
         </div>
-
+      
 
       </div>
     </div>
