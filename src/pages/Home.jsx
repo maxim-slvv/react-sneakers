@@ -1,11 +1,13 @@
 import Card from '../components/Card';
-
-function Home(items,
+function Home({
+  items,
   searchValue,
   setSearchValue,
-  onAddToCart,
+  onChangeSearchInput,
   onAddToFavorite,
-  onChangeSearchInput){
+  onAddToCart,
+}
+  ){
     return(
         <div className="content p-40">
         <div className="content__title d-flex mb-40 justify-between">
@@ -23,21 +25,22 @@ function Home(items,
         </div>
         {/* КАРТОЧКИ */}
       <div className="content__cards d-flex">
-        {items
+          {
+          items
           .filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-          .map((item, index) => ( 
-            <Card 
-              key={index}
-              title = {item.title} 
-              price= {item.price} 
-              imageUrl={item.imageUrl}
-              onFavorite={(obj)=> onAddToFavorite(obj)}
-              onPlus={(obj)=> onAddToCart(obj)}
-            />
-        ))}
+            .map((item, index) => ( 
+              <Card 
+                key={index}
+                title = {item.title} 
+                price= {item.price} 
+                imageUrl={item.imageUrl}
+                onFavorite={(obj)=> onAddToFavorite(obj)}
+                onPlus={(obj)=> onAddToCart(obj)}
+              />
+          ))}
       </div>
     </div>
     )
 }
 
-export default Home;
+export {Home};

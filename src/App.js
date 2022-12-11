@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import axios from 'axios';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
-import Home from './pages/Home';
+import {Home} from './pages/Home';
 
 
 
@@ -37,6 +37,7 @@ function App() {
 
   }, [])
 
+  // console.log(items)
   const onAddToCart = (obj) => {
     // говорим по вот этой ссылке передай объект - который возвращает метод onAddToCart
     axios.post('https://638b00687220b45d2285fede.mockapi.io/cart', obj);
@@ -58,6 +59,7 @@ function App() {
     setSearchValue(event.target.value);
   }
 
+
   return (
   
     <div className="wrapper">
@@ -75,8 +77,7 @@ function App() {
             onChangeSearchInput={onChangeSearchInput}
           />
         }/>
-         <Route path="/" element={<p>Главная</p>}></Route>
-         <Route path="/favorites" element={<p>ЗАКЛАДКИ</p>}></Route>
+        <Route path="/favorites" element={<p>ЗАКЛАДКИ</p>}/>
       </Routes>
       
       {/* ТЕЛО ПОСЛЕ ХЕАДЕРА */}
