@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
 import {Home} from './pages/Home';
+import {Favorites} from './pages/Favorites';
 
 
 
@@ -33,6 +34,9 @@ function App() {
     });
     axios.get('https://638b00687220b45d2285fede.mockapi.io/cart').then(res =>{
       setCartItems(res.data);
+    });
+    axios.get('https://638b00687220b45d2285fede.mockapi.io/favorites').then(res =>{
+      setFavorites(res.data);
     });
 
   }, [])
@@ -77,15 +81,12 @@ function App() {
             onChangeSearchInput={onChangeSearchInput}
           />
         }/>
-        <Route path="/favorites" element={<p>ЗАКЛАДКИ</p>}/>
+        <Route path="/favorites" element={<Favorites items={favorites} onAddToFavorite={onAddToFavorite}/>}/>
       </Routes>
       
-      {/* ТЕЛО ПОСЛЕ ХЕАДЕРА */}
+
  
     </div>
-   
-
-
   )
 }
 
